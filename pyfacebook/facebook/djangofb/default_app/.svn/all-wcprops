@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/74/trunk/locked/fb/pyfacebook/facebook/djangofb/default_app
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/74/trunk/locked/fb/pyfacebook/facebook/djangofb/default_app/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/!svn/ver/74/trunk/locked/fb/pyfacebook/facebook/djangofb/default_app/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/74/trunk/locked/fb/pyfacebook/facebook/djangofb/default_app/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/74/trunk/locked/fb/pyfacebook/facebook/djangofb/default_app/urls.py
+END

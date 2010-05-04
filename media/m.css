@@ -1,0 +1,127 @@
+body {
+	font-size:0.7em;
+	text-align:center;
+	font-family:"Verdana";
+	margin:0px;
+}
+
+#radicals, #header, .dic_results, .dic_block {
+	width:220px;
+}
+#radicals .matches {
+	width:214px;
+}
+#radicals .char_matches {
+	width:194px;
+}
+#radicals .word_matches {
+	width:174px;
+}
+
+#content, #header {
+	margin:auto;
+	text-align:center;
+}
+#header {
+	height:14px;
+	border-bottom:1px solid #999;
+        background-color:#59B;
+	text-align:left;
+}
+
+span, h1, h2 {
+	margin:0px;
+	padding:0px;
+	font-size:0.9em;
+}
+h1, h2 {
+	margin:2px;
+}
+h1 {
+	font-size:1.3em;
+}
+
+.breaker { clear:both; height:1px; float:none; }
+.cleared {
+  float: none;
+  clear: both;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size:1px;
+}
+.clear { clear: both; }
+.left { float:left; }
+.right { float:right; }
+
+.line { float:left; margin:3px; }
+
+#radicals {
+	border:1px solid #999;
+	padding:0px;
+}
+#radicals .square {
+	width:18px;
+	height:16px;
+	float:left;
+	text-align:center;
+	vertical-align:middle;
+	line-height:16px;
+	margin:1px;
+}
+.c {
+	cursor:pointer;
+}
+#radicals .stroke {
+	background-color:#555;
+	color:#FFFFFF
+}
+#radicals .leftstrokes {
+	width:auto;
+	float:left;
+	height:auto;
+	margin-left:1px;
+	line-height:14px;
+}
+
+#radicals .matches, #radicals .char_matches, #radicals .word_matches {
+	height:120px;
+	float:left;
+	font-size:1em;
+	overflow:auto;
+	padding:1px;
+	margin:1px;
+	border:1px solid #999;
+	background-color:#DDD;
+	text-align:left;
+}
+#radicals .word_matches {
+	height:110px;
+}
+#radicals .matches {
+	height:250px;
+	margin-top:2px;
+	margin-bottom:2px;
+}
+.selected {
+	background-color:#D55;
+}
+
+
+/* DICT */
+.dic_block {
+	border:1px solid #999;
+	padding:0px;
+}
+
+.dic_results {
+	overflow:auto;
+	height:300px;
+	display:none;
+	text-align:left;
+}
+
+ul, li {
+	margin:1px;
+	padding-left:5px;
+}

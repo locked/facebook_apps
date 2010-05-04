@@ -1,0 +1,54 @@
+8
+
+dir
+74
+http://svn.i-kom.fr/trunk/locked/fb/pyfacebook/tests
+http://svn.i-kom.fr
+
+
+
+2009-08-28T20:38:28.330553Z
+74
+locked
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+aaa6d801-924a-4339-bafb-80e5c4f7392f
+
+test.py
+file
+
+
+
+
+2009-08-28T20:38:46.000000Z
+05e19af9bd1fb5e089f8f55d23b73f8f
+2009-08-28T20:38:28.330553Z
+74
+locked
+has-props
+
+minimock.py
+file
+
+
+
+
+2009-08-28T20:38:46.000000Z
+3b98289c46ed4803401635fca08290f3
+2009-08-28T20:38:28.330553Z
+74
+locked
+has-props
+

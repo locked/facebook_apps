@@ -1,0 +1,79 @@
+8
+
+dir
+74
+http://svn.i-kom.fr/trunk/locked/fb/pyfacebook
+http://svn.i-kom.fr
+
+
+
+2009-08-28T20:38:28.330553Z
+74
+locked
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+aaa6d801-924a-4339-bafb-80e5c4f7392f
+
+tests
+dir
+
+setup.py
+file
+
+
+
+
+2009-08-28T20:38:46.000000Z
+27843b8e1e2fd2697867122196163c45
+2009-08-28T20:38:28.330553Z
+74
+locked
+has-props
+
+bin
+dir
+
+facebook
+dir
+
+MANIFEST.in
+file
+
+
+
+
+2009-08-28T20:38:46.000000Z
+86d73fdbcf4bb261f7a44e231626816c
+2009-08-28T20:38:28.330553Z
+74
+locked
+has-props
+
+README
+file
+
+
+
+
+2009-08-28T20:38:46.000000Z
+f942187bff7be705d90476aa964d14ec
+2009-08-28T20:38:28.330553Z
+74
+locked
+has-props
+
+examples
+dir
+

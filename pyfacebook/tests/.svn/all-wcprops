@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/!svn/ver/74/trunk/locked/fb/pyfacebook/tests
+END
+test.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/74/trunk/locked/fb/pyfacebook/tests/test.py
+END
+minimock.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/!svn/ver/74/trunk/locked/fb/pyfacebook/tests/minimock.py
+END
