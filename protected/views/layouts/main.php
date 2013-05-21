@@ -15,6 +15,7 @@ body {
 	padding-top: 60px;
 }
 </style>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.3.2.min.js"></script>
 </head>
 
 <body>
@@ -32,7 +33,7 @@ body {
 				'items'=>array(
 					array('label'=>'JA Dict','url'=>array('site/index/ja')),
 					array('label'=>'CN Dict','url'=>array('site/index/cn')),
-					//array('label'=>'Quizz','url'=>array('site/quizz')),
+					array('label'=>'Quiz','url'=>array('site/quiz')),
 				),
 				'htmlOptions'=>array('class'=>'nav'),
 			)); ?>
@@ -54,7 +55,6 @@ body {
 	</div>
 
 </div><!-- page -->
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.3.2.min.js"></script>
 
 </body>
 </html>

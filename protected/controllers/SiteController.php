@@ -17,9 +17,39 @@ class SiteController extends Controller
 	        	$this->render('error', $error);
 	    }
 	}
-	/**
-	 * This is the action to get to the index.
-	 */
+	
+	
+	public function actionQuiz()
+	{
+		$fileName = dirname(__FILE__).'/../../studylists/simpset300.u8';
+		$csvData = explode("\n",file_get_contents($fileName));
+		$data = array();
+		foreach( $csvData as $line ) {
+			$data[] = str_getcsv($line, "	");
+		}
+		$qs = array();
+		$aps = array();
+		$aes = array();
+		foreach( $data as $row ) {
+			$qs[] = $row[0];
+			$char = CEDict::model()->findAllByAttributes(array("simple"=>$row[0]));
+			$fc = "";
+			foreach( $char as $c ) {
+				$fcp = $c->pinyin;
+				$fce = addslashes($c->english);
+			}
+			$aps[] = $fcp;
+			$aes[] = $fce;
+		}
+		$this->render('quiz', array(
+			"level"=>1,
+			"qs"=>$qs,
+			"aps"=>$aps,
+			"aes"=>$aes,
+        ));
+	}
+	
+	
 	public function actionIndex($lang="ja")
 	{
 		switch( $lang ) {

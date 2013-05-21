@@ -254,13 +254,17 @@ ul, li {
 	height:150px;
 	text-align:center;
 }
+#answer label {
+	display:inline-block;
+	margin:4px;
+}
 #answer_left, #answer_right {
-	width:150px;
+	width:30%;
 	float:left;
 	text-align:left;
 }
 #answer_right {
-	width:300px;
+	width:65%;
 }
 #info {
 	font-size:1em;
