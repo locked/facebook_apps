@@ -6,10 +6,10 @@
 
 <?php foreach( $chars as $c ): ?>
     <div class="c square" onclick="openCharDetails(this,0);" id="char-<?= $c->id; ?>"><?php
-    if( $lang=="zh" ) {
-		 echo $c;
-	} else {
+    if( property_exists($c, "char") ) {
 		echo $c->char;
+	} else {
+		echo strval("&#".strval(intval($c->unicode,16)).";");
 	}
 	?></div>
 <?php endforeach; ?>

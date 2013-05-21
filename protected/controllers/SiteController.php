@@ -20,15 +20,23 @@ class SiteController extends Controller
 	/**
 	 * This is the action to get to the index.
 	 */
-	public function actionIndex()
+	public function actionIndex($lang="ja")
 	{
-		$radicals = JPRadical::model()->findAll();
+		switch( $lang ) {
+		case "ja":
+			$radicals = JPRadical::model()->findAll();
+		break;
+		case "cn":
+			$radicals = KXRadical::model()->findAll();
+		break;
+		}
 		$radicals_by_strokes = array();
 		foreach( $radicals as $radical ) {
 			$radicals_by_strokes[$radical->strokes][] = $radical;
 		}
         $this->render('index', array(
 			"radicals_by_strokes"=>$radicals_by_strokes,
+			"lang"=>$lang,
         ));
 	}
 
@@ -37,6 +45,11 @@ class SiteController extends Controller
 		switch( $lang ) {
 		case "ja":
 			$c = JPKanji::model()->findByAttributes(array("char"=>$char));
+		break;
+		case "cn":
+			$c = CEDict::model()->findByAttributes(array("simple"=>$char));
+			if( !is_object($c) ) $c = CEDict::model()->findByAttributes(array("word"=>$char));
+			//print_r($c); echo property_exists($c, "simple")?"YES":"NO"; die();
 		break;
 		}
 		//echo $c->char;
@@ -54,11 +67,49 @@ class SiteController extends Controller
         ));
 	}
 
+	public function actionFromEnglish($lang, $char)
+	{
+		$criteria=new CDbCriteria;
+		switch( $lang ) {
+		case "ja":
+			$criteria->compare('english',' '.$char.' ',true, 'OR');
+			$criteria->compare('english',' '.$char,true, 'OR');
+			$criteria->compare('english',$char.' ',true, 'OR');
+			$criteria->compare('english',$char.',',true, 'OR');
+			$results = Edict::model()->findAll($criteria);
+		break;
+		case "cn":
+			$criteria->compare('english',' '.$char.' ',true, 'OR');
+			$criteria->compare('english','/'.$char.' ',true, 'OR');
+			$criteria->compare('english',' '.$char.'/',true, 'OR');
+			$criteria->compare('english','('.$char.' ',true, 'OR');
+			$criteria->compare('english',' '.$char.')',true, 'OR');
+			$criteria->compare('english',' '.$char.',',true, 'OR');
+			$criteria->compare('english',','.$char.' ',true, 'OR');
+			$results = CEDict::model()->findAll($criteria);
+		break;
+		}
+        $this->renderPartial('_results', array(
+			"results"=>$results,
+			"lang"=>$lang,
+        ));
+	}
+
 	public function actionFromChar($lang, $char)
 	{
-		$chars = Edict::model()->findAll(array(
-			'condition'=>"word LIKE '%".$char."%'",
-		));
+		switch( $lang ) {
+		case "ja":
+			$criteria=new CDbCriteria;
+			$criteria->compare('word',$char,true);
+			$chars = Edict::model()->findAll($criteria);
+		break;
+		case "cn":
+			$criteria=new CDbCriteria;
+			$criteria->compare('word',$char,true);
+			$criteria->compare('simple',$char,true);
+			$chars = CEDict::model()->findAll($criteria);
+		break;
+		}
 		//echo $char;
         $this->renderPartial('_jukugo', array(
 			"chars"=>$chars,
@@ -75,6 +126,10 @@ class SiteController extends Controller
 		case "ja":
 			$radical = JPRadical::model()->findByPk($rid);
 			$chars = $radical->kanjis;
+		break;
+		case "cn":
+			$chars = Unichin::model()->findAllByAttributes(array("radical"=>$rid));
+			//print_r($chars);
 		break;
 		}
         $this->renderPartial('_details', array(

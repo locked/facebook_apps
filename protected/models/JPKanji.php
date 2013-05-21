@@ -5,6 +5,8 @@
  */
 class JPKanji extends CActiveRecord
 {
+	public $char;
+	
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);

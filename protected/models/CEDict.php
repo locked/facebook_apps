@@ -1,11 +1,12 @@
 <?php
 
 /**
- * This is the model class for table "JPRadical"
+ * This is the model class for table "CEDict"
  */
-class JPRadical extends CActiveRecord
+class CEDict extends CActiveRecord
 {
-	public $key;
+	public $simple;
+	public $pinyin;
 	
 	public static function model($className=__CLASS__)
 	{
@@ -17,7 +18,7 @@ class JPRadical extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'dict_JPRadical';
+		return 'dict_cedict';
 	}
 
 	/**
@@ -27,9 +28,11 @@ class JPRadical extends CActiveRecord
 	{
 		return array(
 			array('id', 'required'),
-			array('id, strokes', 'numerical'),
-			array('key', 'length', 'max'=>20),
-			array('id, key, strokes, info', 'safe', 'on'=>'search'),
+			array('id', 'numerical'),
+			array('word, simple', 'length', 'max'=>200),
+			array('pinyin, pinyin_notones', 'length', 'max'=>100),
+			array('english', 'length', 'max'=>1000),
+			array('id, word, simple, pinyin, pinyin_notones, english', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -39,7 +42,6 @@ class JPRadical extends CActiveRecord
 	public function relations()
 	{
 		return array(
-			'kanjis' => array(self::MANY_MANY, 'JPKanji', 'dict_JPRadical_Kanji(jpradical_id, jpkanji_id)'),
 		);
 	}
 
@@ -50,9 +52,11 @@ class JPRadical extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'key' => 'key',
-			'strokes' => 'strokes',
-			'info' => 'info',
+			'word' => 'word',
+			'simple' => 'simple',
+			'pinyin' => 'pinyin',
+			'pinyin_notones' => 'pinyin_notones',
+			'english' => 'english',
 		);
 	}
 
@@ -73,6 +77,6 @@ class JPRadical extends CActiveRecord
 	
 	
 	public function __toString() {
-		return strval( strval($this->id)." - ".$this->key );
+		return strval( strval($this->id)." - ".$this->word );
 	}
 }

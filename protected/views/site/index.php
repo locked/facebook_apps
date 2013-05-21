@@ -19,7 +19,7 @@ foreach( $radicals as $radical ) {
 		<div class="stroke square"><?= $strokes; ?></div>
 		<?php foreach( $radicals as $radical ): ?>
 		    <div class="c square" id="radical_<?= $radical->id; ?>" onclick="openDetails(this);">
-				<?= $radical->key; ?>
+				<?= property_exists($radical, "key")?$radical->key:$radical->char; ?>
 			</div>
 		<?php endforeach; ?>
 	<?php endforeach; ?>
@@ -37,7 +37,7 @@ foreach( $radicals as $radical ) {
 
 <div class="search">
 	<form>
-	<div class="left">{% ifequal dic_lang "zh" %}Pinyin{% else %}Kana{% endifequal %}: </div><input class="left" type="text" id="phonetic" onkeyup="lookUp(this);">
+	<div class="left"><?= $lang=="cn"?"Pinyin":"Kana"; ?>: </div><input class="left" type="text" id="phonetic" onkeyup="lookUp(this);">
 	<div class="breaker"></div>
 	</form>
 	<div id="dic_phonetic" class="dic_results"> </div>
@@ -48,7 +48,8 @@ foreach( $radicals as $radical ) {
 
 <script type="text/javascript">
 var base_url = "<?php echo Yii::app()->request->baseUrl; ?>/site";
-var dic_lang = "ja";
+var base_url_img = "<?php echo Yii::app()->request->baseUrl; ?>/img";
+var dic_lang = "<?php echo $lang; ?>";
 var current_e;
 var current_timer;
 function lookUp( e ) {
@@ -60,7 +61,7 @@ function lookUp( e ) {
 		$("#dic_"+from).html( "" ).fadeOut();
 	if( word.length<2 )
 		return;
-	ne = $(document.createElement("div")).html("<img class='left' src='/media/img/loading.gif'>").attr("id","loading");
+	ne = $(document.createElement("div")).html("<img class='left' src='"+base_url_img+"/loading.gif'>").attr("id","loading");
 	$(e).after(ne);
 		current_e = e;
 		current_timer = window.setTimeout( realLookUp, 1500 );

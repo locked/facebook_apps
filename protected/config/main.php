@@ -45,6 +45,7 @@ return array(
 			'rules'=>array(
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 				'<controller:\w+>/char/<lang:[a-z]+>/<char:\w+>/<level:[0-9-]+>'=>'<controller>/char',
+				'<controller:\w+>/<action:\w+>/<lang:[a-z]+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>/<lang:[a-z]+>/<char:\w+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>/<lang:[a-z]+>/<rid:\d+>/<strokes:[0-9-]+>'=>'<controller>/<action>',
 			),

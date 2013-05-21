@@ -1,12 +1,10 @@
 <?php
 
 /**
- * This is the model class for table "JPRadical"
+ * This is the model class for table "KXRadical"
  */
-class JPRadical extends CActiveRecord
+class KXRadical extends CActiveRecord
 {
-	public $key;
-	
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -17,7 +15,7 @@ class JPRadical extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'dict_JPRadical';
+		return 'dict_KXRadical';
 	}
 
 	/**
@@ -28,8 +26,8 @@ class JPRadical extends CActiveRecord
 		return array(
 			array('id', 'required'),
 			array('id, strokes', 'numerical'),
-			array('key', 'length', 'max'=>20),
-			array('id, key, strokes, info', 'safe', 'on'=>'search'),
+			array('char, char2', 'length', 'max'=>2),
+			array('id, char, char2, strokes, pinyin, english', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -39,7 +37,6 @@ class JPRadical extends CActiveRecord
 	public function relations()
 	{
 		return array(
-			'kanjis' => array(self::MANY_MANY, 'JPKanji', 'dict_JPRadical_Kanji(jpradical_id, jpkanji_id)'),
 		);
 	}
 
@@ -50,9 +47,11 @@ class JPRadical extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'key' => 'key',
+			'char' => 'char',
+			'char2' => 'char2',
 			'strokes' => 'strokes',
-			'info' => 'info',
+			'pinyin' => 'pinyin',
+			'english' => 'english',
 		);
 	}
 
@@ -73,6 +72,6 @@ class JPRadical extends CActiveRecord
 	
 	
 	public function __toString() {
-		return strval( strval($this->id)." - ".$this->key );
+		return strval( strval($this->id)." - ".$this->char );
 	}
 }

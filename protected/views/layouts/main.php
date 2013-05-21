@@ -4,37 +4,47 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
 
-	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
-	<![endif]-->
+	<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.css" rel="stylesheet">
+	<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap-responsive.css" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+	<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" rel="stylesheet" type="text/css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+<style>
+body {
+	padding-top: 60px;
+}
+</style>
 </head>
 
 <body>
-
-<div class="container" id="page">
-
-	<div id="header">
-		<div id="logo"></div>
-		<div id="mainmenu">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">JA/CN Dict</a>
+          <div class="nav-collapse collapse">
 			<?php $this->widget('zii.widgets.CMenu',array(
 				'items'=>array(
-					array('label'=>'Dict','url'=>array('site/dict'), 'itemOptions'=>array('class'=>'menu_dict')),
-					array('label'=>'Quizz','url'=>array('site/quizz'), 'itemOptions'=>array('class'=>'menu_quizz')),
+					array('label'=>'JA Dict','url'=>array('site/index/ja')),
+					array('label'=>'CN Dict','url'=>array('site/index/cn')),
+					//array('label'=>'Quizz','url'=>array('site/quizz')),
 				),
+				'htmlOptions'=>array('class'=>'nav'),
 			)); ?>
-		</div><!-- mainmenu -->
-	</div><!-- header -->
-
-    <div id="content">
-		<?php echo $content; ?>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+	</div>
+    
+	<div class="container">
+		<div id="content">
+			<?php echo $content; ?>
+		</div>
     </div>
     
 	<!-- footer -->
